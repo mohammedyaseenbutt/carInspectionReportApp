@@ -25,15 +25,15 @@ export default function BottomTabs() {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
- useEffect(() => {
+  useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
+      "keyboardDidShow",
       () => {
         setKeyboardVisible(true); // or some other action
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
+      "keyboardDidHide",
       () => {
         setKeyboardVisible(false); // or some other action
       }
@@ -47,10 +47,11 @@ export default function BottomTabs() {
   return (
     <View style={{ flex: 1 }}>
       <Tab.Navigator
+        initialRouteName="HomeStack"
         style={{ marginHorizontal: 10 }}
         // sceneContainerStyle={{marginHorizontal:20,backgroundColor:'red'}}
         screenOptions={{
-          tabBarHideOnKeyboard:true,
+          tabBarHideOnKeyboard: true,
           headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: colors.red,
@@ -62,11 +63,11 @@ export default function BottomTabs() {
             fontWeight: "bold",
           },
           tabBarStyle: {
-            backgroundColor: colors.blue1,
+            backgroundColor: colors.black,
             height: 55,
             borderRadius: 10,
-            borderBottomLeftRadius:20,
-            borderBottomRightRadius:20,
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20,
             // Shadow...
             shadowColor: colors.black,
             shadowOpacity: 0.1,
@@ -74,7 +75,7 @@ export default function BottomTabs() {
               width: 40,
               height: 90,
             },
-            marginBottom:isKeyboardVisible?-40:20,
+            marginBottom: isKeyboardVisible ? -40 : 20,
             paddingHorizontal: 20,
             marginHorizontal: wp(8),
             position: "absolute",
@@ -84,30 +85,9 @@ export default function BottomTabs() {
           //  }
         }}
       >
-        {/* <Tab.Screen
-          name={"CheckStack"}
-          component={CheckStack}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <View style={focused ? styles.TouchableTab : {}}>
-                <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
-                  <Image
-                    source={globalPath.checkin}
-                    resizeMode={"contain"}
-                    style={{
-                      width: 22,
-                      height: 22,
-                      tintColor: "white",
-                    }}
-                  ></Image>
-                </View>
-              </View>
-            ),
-          }}
-        ></Tab.Screen> */}
         <Tab.Screen
           name={"HomeStack"}
-          component={History}
+          component={HomeStack}
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={focused ? styles.TouchableTab : {}}>
@@ -126,29 +106,7 @@ export default function BottomTabs() {
             ),
           }}
         ></Tab.Screen>
-        {/* <Tab.Screen
-          name={"REPORT"}
-          component={ReportStack}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <View style={focused ? styles.TouchableTab : {}}>
-                <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
-                  <Image
-                    source={globalPath.report}
-                    resizeMode={"contain"}
-                    style={{
-                      width: 22,
-                      height: 22,
-                      tintColor: "white",
-                    }}
-                  ></Image>
-                </View>
-              </View>
-            ),
-          }}
-        ></Tab.Screen> */}
-
-        {/* <Tab.Screen
+        <Tab.Screen
           name={"History"}
           component={History}
           options={{
@@ -156,7 +114,7 @@ export default function BottomTabs() {
               <View style={focused ? styles.TouchableTab : {}}>
                 <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
                   <Image
-                    source={globalPath.history}
+                    source={globalPath.AddLogo}
                     resizeMode={"contain"}
                     style={{
                       width: 22,
@@ -168,29 +126,29 @@ export default function BottomTabs() {
               </View>
             ),
           }}
-        ></Tab.Screen> */}
+        ></Tab.Screen>
 
-        {/* <Tab.Screen
-          name={"Notifications"}
-          component={PresentTeam}
+        <Tab.Screen
+          name={"Profile"}
+          component={History}
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={focused ? styles.TouchableTab : {}}>
                 <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
                   <Image
-                    source={globalPath.history}
+                    source={globalPath.ProfileLogo}
                     resizeMode={"contain"}
                     style={{
                       width: 22,
+                      tintColor: colors.white,
                       height: 22,
-                      tintColor: "white",
                     }}
                   ></Image>
                 </View>
               </View>
             ),
           }}
-        ></Tab.Screen> */}
+        ></Tab.Screen>
       </Tab.Navigator>
     </View>
   );
@@ -213,7 +171,14 @@ function History() {
 function Report() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>History!</Text>
+      <Text>Report!</Text>
+    </View>
+  );
+}
+function profile() {
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Profile!</Text>
     </View>
   );
 }
@@ -227,7 +192,7 @@ const styles = StyleSheet.create({
   ActiveTab: {
     width: 60,
     height: 60,
-    backgroundColor: colors.blue1,
+    backgroundColor: colors.grey1,
     borderRadius: 30,
     borderWidth: 4,
     borderColor: colors.white,
@@ -238,11 +203,11 @@ const styles = StyleSheet.create({
   },
   inActiveTab: {},
   TouchableTab: {
-    backgroundColor: "white",
+    backgroundColor: colors.green1,
     padding: 2,
-    width: 65,
+    width: 60,
     bottom: 20,
-    height: 65,
+    height: 60,
     borderRadius: 30,
     alignItems: "center",
   },

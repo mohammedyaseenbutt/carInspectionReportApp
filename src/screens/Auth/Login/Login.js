@@ -88,7 +88,7 @@ const Login = ({ navigation }) => {
   //   }
   //   //  else if (company === "") {
   //   //   setErrorString("Please select school");
-  //   // } 
+  //   // }
   //   else {
   //     // console.log("ErrorMessage:yhyuu ");
   //     userLogin();
@@ -101,13 +101,11 @@ const Login = ({ navigation }) => {
   // }
   return (
     <View style={styles.container}>
-      
       <ImageBackground
         // source={globalPath.background}
         resizeMode="cover"
         style={styles.image}
       >
-        
         <View style={{ marginHorizontal: wp(0) }}>
           <View style={styles.screeninfo}>
             <Image style={styles.logo} source={globalPath.logo} />
@@ -170,15 +168,11 @@ const Login = ({ navigation }) => {
                   margin={[50, 0, 0, 0]}
                   title={"Sign in"}
                   // onPress={() => Validation()}
-                  onPress={()=>navigation.navigate(routeName.DASHBOARD)}
+                  onPress={() => navigation.navigate(routeName.BOTTOM_TABS)}
                 />
-              
               </View>
-                
             </View>
-         
           </View>
-         
         </View>
         {/* {loading?
                  <Loader/>
@@ -186,7 +180,6 @@ const Login = ({ navigation }) => {
                    undefined
                 } */}
       </ImageBackground>
-    
     </View>
   );
 };

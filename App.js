@@ -14,7 +14,7 @@ const App = () => {
           {/* <StatusBar hidden />  */}
           <StatusBar
             barStyle="light-content"
-            backgroundColor="transparent"
+            backgroundColor="black"
             translucent={true}
           />
           <Router />
@@ -30,13 +30,12 @@ export default App;
 // console.disableYellowBox = true;
 // YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'RNDeviceInfo', 'Warning: An update']);
 
-
 LogBox.ignoreLogs([
   "Warning: VirtualizedList should",
   "Warning: Each child",
   "Warning: Each child in a",
   "Warning: Failed prop type",
-  'Remote debugger',
-  'Require cycle:',
-  'Non-serializable values were found in the navigation state',
+  "Remote debugger",
+  "Require cycle:",
+  "Non-serializable values were found in the navigation state",
 ]);

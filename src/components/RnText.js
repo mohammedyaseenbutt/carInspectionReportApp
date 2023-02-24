@@ -1,8 +1,8 @@
-import React from 'react';
-import { Text } from 'react-native';
-import { handleMargin, handlePadding } from '../constants/theme';
-import Fonts from '../helpers/Fonts';
-import { wp } from '../helpers/Responsiveness';
+import React from "react";
+import { Text } from "react-native";
+import { handleMargin, handlePadding } from "../constants/theme";
+import Fonts from "../helpers/Fonts";
+import { wp } from "../helpers/Responsiveness";
 
 const ResponsiveText = ({
   children,
@@ -41,23 +41,22 @@ const ResponsiveText = ({
         (margin && handleMargin(margin): { margin: 10 }),
         (padding && handlePadding(padding): { padding: 10 }),
         position && { alignSelf: position },
-        textAlign && { textAlign: 'center' },
-        justifyContent && { justifyContent: 'center' },
-        
-        cutText && { textDecorationLine: 'line-through' },
+        textAlign && { textAlign: "center" },
+        justifyContent && { justifyContent: "center" },
+
+        cutText && { textDecorationLine: "line-through" },
         { top: top },
-        {flexShrink:flexShrink},
-        {fontWeight:weight},
-        {flex:flex},
-        { color: color },
+        { flexShrink: flexShrink },
+        { fontWeight: weight },
+        { flex: flex },
+        { color: color ? color : "black" },
         { backgroundColor: backgroundColor },
         { fontFamily: fontFamily ? Fonts[fontFamily] : Fonts.Medium },
-        {borderWidth: borderWidth},
-        {borderRightWidth:borderRightWidth},
-        {borderLeftWidth:borderLeftWidth},
-
-
-      ]}>
+        { borderWidth: borderWidth },
+        { borderRightWidth: borderRightWidth },
+        { borderLeftWidth: borderLeftWidth },
+      ]}
+    >
       {children}
     </Text>
   );
