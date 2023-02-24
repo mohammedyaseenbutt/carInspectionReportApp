@@ -1,6 +1,0 @@
-module Pods_OrderTaking {
-  umbrella header "Pods-OrderTaking-umbrella.h"
-
-  export *
-  module * { export * }
-}
