@@ -12,6 +12,7 @@ const calenderLogo = require("../assets/icons/calendar.png");
 const CarImage = require("../assets/icons/car.jpeg");
 const EditLogo = require("../assets/icons/edit.png");
 const AddLogo = require("../assets/icons/add.png");
+const AtoZLogo = require("../assets/icons/AtoZ.png");
 
 export const globalPath = {
   logo,
@@ -19,6 +20,7 @@ export const globalPath = {
   home,
   calenderLogo,
   CarImage,
+  AtoZLogo,
   HistoryLogo,
   AddLogo,
   EditLogo,

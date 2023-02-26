@@ -6,13 +6,17 @@ import { hp, wp } from "../../helpers/Responsiveness";
 import { TextInput } from "react-native-gesture-handler";
 import Icon from "../../components/Icon";
 import { globalPath } from "../../constants/globalPath";
-import CardView from "../../components/CardView";
 import { JobDetail } from "../../constants/mock";
 import ResponsiveText from "../../components/RnText";
+import CardView from "../../components/CardView";
+// import CardView from "../../components/CardView";
 
 const Home = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+      {/* <View style={{ width: "100%", height: hp(5) }}>
+        <Icon size={wp(40)} source={globalPath.AtoZLogo} />
+      </View> */}
       <View style={styles.searchBar}>
         <Icon tintColor={colors.grey1} source={globalPath.SearchLogo} />
         <TextInput
@@ -26,7 +30,7 @@ const Home = () => {
         />
         <Icon tintColor={colors.green1} source={globalPath.calenderLogo} />
       </View>
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           alignSelf: "flex-end",
@@ -53,7 +57,7 @@ const Home = () => {
             source={globalPath.AddLogo}
           />
         </View>
-      </View>
+      </View> */}
 
       <ScrollView>
         {JobDetail.map((item, index) => {
