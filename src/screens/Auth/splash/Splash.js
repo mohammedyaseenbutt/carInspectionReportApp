@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  StatusBar, Image,
+  StatusBar,
+  Image,
   Text,
 } from "react-native";
 import { CommonActions } from "@react-navigation/native";
@@ -20,6 +21,7 @@ import RnText from "../../../components/RnText";
 // import Icon from "../../../components/Icon";
 import { useDispatch } from "react-redux";
 import ResponsiveText from "../../../components/RnText";
+import Icon from "../../../components/Icon";
 // import { getBfaPartners } from "../../../redux/actions/user.actions";
 
 const Splash = ({ navigation }) => {
@@ -55,7 +57,6 @@ const Splash = ({ navigation }) => {
     } else {
       // navigation.dispatch(StackActions.replace(routeName.LANDING_SCREEN));
       navigation.replace(routeName.BOTTOM_TABS);
-      
     }
   };
 
@@ -65,15 +66,28 @@ const Splash = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={globalPath.splashBackgroung} resizeMode={'cover'} style={styles.image}>
-        <Image style={styles.logo} source={globalPath.logo} />
+      <ImageBackground
+        source={globalPath.splashBackgroung}
+        resizeMode={"cover"}
+        style={styles.image}
+      >
+        <Image style={styles.logo} source={globalPath.AtoZLogo} />
         <View style={styles.footerContainer}>
-          <RnText color={colors.black} fontFamily={Fonts.LightItalic}
-          >Powered by  </RnText>
-          <Image style={styles.poweredLogo} source={globalPath.CompanyLogo} />
+          <RnText
+            size={2.5}
+            color={colors.black}
+            fontFamily={Fonts.LightItalic}
+          >
+            Powered by{" "}
+          </RnText>
+          <Icon
+            size={wp(10)}
+            source={{
+              uri: "https://stampasolutions.com/assets/images/Stampa-Solution-Logo.png",
+            }}
+          />
         </View>
       </ImageBackground>
-     
     </View>
   );
 };
@@ -83,17 +97,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footerContainer: {
-    flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
   },
   image: {
     flex: 1,
-    justifyContent: "center", alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   logo: {
-    height: hp(20), width: wp(40), resizeMode: 'contain', flex: 1
+    height: hp(20),
+    width: wp(40),
+    resizeMode: "contain",
+    flex: 1,
   },
   poweredLogo: {
-    height: hp(15), width: wp(15), resizeMode: 'contain'
+    height: hp(15),
+    width: wp(15),
+    resizeMode: "contain",
   },
   text: {
     color: "white",
@@ -101,7 +124,7 @@ const styles = StyleSheet.create({
     lineHeight: 84,
     fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000c0"
-  }
+    backgroundColor: "#000000c0",
+  },
 });
 export default Splash;

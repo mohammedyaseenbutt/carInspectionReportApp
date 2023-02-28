@@ -5,51 +5,84 @@ import ResponsiveText from "./RnText";
 import Icon from "./Icon";
 import { globalPath } from "../constants/globalPath";
 import { hp, wp } from "../helpers/Responsiveness";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { routeName } from "../constants/routeName";
 
-const CardView = ({ VIN, Year, Make, Modal, CarImage, created }) => {
+const CardView = ({ VIN, Year, Make, Modal, onPress, CarImage, created }) => {
   return (
-    <View style={styles.carView}>
-      <View style={{ flexDirection: "row", margin: 6 }}>
+    <TouchableOpacity onPress={onPress} style={styles.carView}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
         <Icon
           borderRadius={10}
+          margin={[0, 15, 0, 15]}
           resizeMode={"cover"}
           size={hp(15)}
           source={{ uri: CarImage }}
         />
-        <View>
-          <ResponsiveText margin={[5, 0, 0, 10]} weight={"bold"}>
-            VIN
-            <ResponsiveText color={colors.grey1}> {VIN}</ResponsiveText>
-          </ResponsiveText>
-          <ResponsiveText margin={[5, 0, 0, 10]} weight={"bold"}>
-            Year
-            <ResponsiveText color={colors.grey1} margin={[0, 0, 0, 0]}>
-              {" "}
-              {Year}
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: wp(70),
+          }}
+        >
+          <View>
+            <ResponsiveText size={3} margin={[5, 0, 0, 10]} weight={"bold"}>
+              VIN
+              <ResponsiveText weight={"500"} color={colors.grey1} size={3}>
+                {" "}
+                {VIN}
+              </ResponsiveText>
             </ResponsiveText>
-          </ResponsiveText>
-          <ResponsiveText margin={[5, 0, 0, 10]} weight={"bold"}>
-            Make
-            <ResponsiveText color={colors.grey1}> {Make}</ResponsiveText>
-          </ResponsiveText>
-          <ResponsiveText margin={[5, 0, 0, 10]} weight={"bold"}>
-            Modal
-            <ResponsiveText color={colors.grey1}> {Modal}</ResponsiveText>
-          </ResponsiveText>
-          <ResponsiveText margin={[5, 0, 0, 10]} weight={"bold"}>
-            Created on
-            <ResponsiveText color={colors.grey1}>{created}</ResponsiveText>
-          </ResponsiveText>
-        </View>
-        <View style={{ marginLeft: wp(10) }}>
-          <Icon
-            size={18}
-            // margin={[4, 0, 0, wp(10)]}
-            source={globalPath.EditLogo}
-          />
+            <ResponsiveText size={3} margin={[5, 0, 0, 10]} weight={"bold"}>
+              Year
+              <ResponsiveText
+                size={3}
+                weight={"500"}
+                color={colors.grey1}
+                margin={[0, 0, 0, 0]}
+              >
+                {" "}
+                {Year}
+              </ResponsiveText>
+            </ResponsiveText>
+            <ResponsiveText size={3} margin={[5, 0, 0, 10]} weight={"bold"}>
+              Make
+              <ResponsiveText weight={"500"} size={3} color={colors.grey1}>
+                {" "}
+                {Make}
+              </ResponsiveText>
+            </ResponsiveText>
+            <ResponsiveText size={3} margin={[5, 0, 0, 10]} weight={"bold"}>
+              Modal
+              <ResponsiveText weight={"500"} size={3} color={colors.grey1}>
+                {" "}
+                {Modal}
+              </ResponsiveText>
+            </ResponsiveText>
+            <ResponsiveText size={3} margin={[5, 0, 0, 10]} weight={"bold"}>
+              Created on
+              <ResponsiveText weight={"500"} size={3} color={colors.grey1}>
+                {" "}
+                {created}
+              </ResponsiveText>
+            </ResponsiveText>
+          </View>
+          <View style={{ marginTop: hp(1) }}>
+            <Icon
+              size={wp(4)}
+              // margin={[10, 0, 0, wp(0)]}
+              source={globalPath.EditLogo}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -61,7 +94,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.green1,
     margin: 10,
-    // alignItems: "center",
     borderRadius: 10,
   },
 });

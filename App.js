@@ -13,8 +13,8 @@ const App = () => {
         <PersistGate loading={null} persistor={persistor}>
           {/* <StatusBar hidden />  */}
           <StatusBar
-            barStyle="light-content"
-            backgroundColor="black"
+            barStyle="default"
+            backgroundColor="transparent"
             translucent={true}
           />
           <Router />

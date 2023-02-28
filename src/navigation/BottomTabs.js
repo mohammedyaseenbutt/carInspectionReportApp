@@ -14,8 +14,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useRef } from "react";
 import { globalPath } from "../constants/globalPath";
 import { colors } from "../constants/colorsPallet";
-import { wp } from "../helpers/Responsiveness";
+import { hp, wp } from "../helpers/Responsiveness";
 import HomeStack from "./HomeStack";
+import Profile from "../screens/Home/Profile";
+import Regform from "../components/Regform";
+import Reg_FormStack from "./RegFormStack";
+import Icon from "../components/Icon";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,6 +51,24 @@ export default function BottomTabs() {
   return (
     <View style={{ flex: 1 }}>
       <Tab.Navigator
+        tabBarOptions={{
+          activeBackgroundColor: colors.white,
+          // activeWidth: wp(10),
+          activeTintColor: colors.EV_black,
+          inactiveTintColor: "transparent",
+          tabStyle: {
+            // backgroundColor: colors.red,
+            // height: 75,
+            // width: wp(80),
+            // borderTopRightRadius: 20,
+            // roborderTopLeftRadius: 20,
+          },
+        }}
+        appearance={{
+          horizontalPadding: 40,
+
+          tabBarBackground: colors.EV_black,
+        }}
         initialRouteName="HomeStack"
         style={{ marginHorizontal: 10 }}
         // sceneContainerStyle={{marginHorizontal:20,backgroundColor:'red'}}
@@ -63,21 +85,20 @@ export default function BottomTabs() {
             fontWeight: "bold",
           },
           tabBarStyle: {
-            backgroundColor: colors.black,
-            height: 55,
-            borderRadius: 10,
-            borderBottomLeftRadius: 20,
-            borderBottomRightRadius: 20,
-            // Shadow...
+            backgroundColor: colors.white,
+            // height: Platform.OS == "ios" ? 78 : 55,
+            height: hp(5),
+            width: "100%",
+            alignSelf: "center",
             shadowColor: colors.black,
             shadowOpacity: 0.1,
             shadowOffset: {
               width: 40,
               height: 90,
             },
-            marginBottom: isKeyboardVisible ? -40 : 20,
-            paddingHorizontal: 20,
-            marginHorizontal: wp(8),
+            marginBottom: isKeyboardVisible ? -40 : 0,
+            // paddingHorizontal: 20,
+            // marginHorizontal: wp(8),
             position: "absolute",
             // justifyContent:'center',
             paddingTop: Platform.OS == "ios" ? 20 : 0,
@@ -92,36 +113,30 @@ export default function BottomTabs() {
             tabBarIcon: ({ focused }) => (
               <View style={focused ? styles.TouchableTab : {}}>
                 <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
-                  <Image
+                  <Icon
+                    tintColor={focused ? colors.white : colors.black}
                     source={globalPath.dashboard}
                     resizeMode={"contain"}
-                    style={{
-                      width: 22,
-                      height: 22,
-                      tintColor: "white",
-                    }}
-                  ></Image>
+                    size={wp(3)}
+                  />
                 </View>
               </View>
             ),
           }}
         ></Tab.Screen>
         <Tab.Screen
-          name={"History"}
-          component={History}
+          name={"Reg_FormStack"}
+          component={Reg_FormStack}
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={focused ? styles.TouchableTab : {}}>
                 <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
-                  <Image
+                  <Icon
                     source={globalPath.AddLogo}
                     resizeMode={"contain"}
-                    style={{
-                      width: 22,
-                      height: 22,
-                      tintColor: "white",
-                    }}
-                  ></Image>
+                    size={wp(3)}
+                    tintColor={focused ? colors.white : colors.black}
+                  />
                 </View>
               </View>
             ),
@@ -130,20 +145,17 @@ export default function BottomTabs() {
 
         <Tab.Screen
           name={"Profile"}
-          component={History}
+          component={Profile}
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={focused ? styles.TouchableTab : {}}>
                 <View style={focused ? styles.ActiveTab : styles.inActiveTab}>
-                  <Image
+                  <Icon
+                    tintColor={focused ? colors.white : colors.black}
+                    size={wp(3)}
                     source={globalPath.ProfileLogo}
                     resizeMode={"contain"}
-                    style={{
-                      width: 22,
-                      tintColor: colors.white,
-                      height: 22,
-                    }}
-                  ></Image>
+                  />
                 </View>
               </View>
             ),
@@ -154,34 +166,6 @@ export default function BottomTabs() {
   );
 }
 
-function NotificationScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Notifications!</Text>
-    </View>
-  );
-}
-function History() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>History!</Text>
-    </View>
-  );
-}
-function Report() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Report!</Text>
-    </View>
-  );
-}
-function profile() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Profile!</Text>
-    </View>
-  );
-}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -192,14 +176,12 @@ const styles = StyleSheet.create({
   ActiveTab: {
     width: 60,
     height: 60,
-    backgroundColor: colors.grey1,
+    backgroundColor: colors.black,
     borderRadius: 30,
     borderWidth: 4,
     borderColor: colors.white,
     justifyContent: "center",
     alignItems: "center",
-    // marginBottom:30
-    // marginBottom: Platform.OS == "android" ?80 : 30
   },
   inActiveTab: {},
   TouchableTab: {

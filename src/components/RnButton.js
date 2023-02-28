@@ -10,6 +10,7 @@ const RnButton = ({
   textColor,
   width,
   padding,
+  titleSize,
   margin,
   gradColor,
   height,
@@ -33,8 +34,8 @@ const RnButton = ({
         {
           height: hp(6.5),
           flexDirection: "row",
-          // width: width ? width : undefined,
-          // height: height ? height : undefined,
+          width: width ? width : wp(80),
+          height: height ? height : hp(5),
           borderRadius: borderRadius ? borderRadius : 30,
         },
       ]}
@@ -42,7 +43,8 @@ const RnButton = ({
     >
       {title && (
         <ResponsiveText
-          size={3.7}
+          size={titleSize ? titleSize : 3.7}
+          weight={"bold"}
           padding={[0, 10]}
           fontFamily={fontFamily ? fontFamily : "Bold"}
           color={textColor ? textColor : colors.white}
